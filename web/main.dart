@@ -7,5 +7,5 @@ import 'package:react/react_dom.dart' as react_dom;
 void main() {
   setClientConfiguration();
 
-  react_dom.render(Songs()(), querySelector('.song-list'));
+  react_dom.render(SongForm()(), querySelector('.song-form'));
 }
