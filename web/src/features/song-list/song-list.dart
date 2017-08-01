@@ -17,7 +17,7 @@ class SongListComponent<T extends SongProps, S extends SongState> extends UiStat
   render() {
     return ((Dom.ul() ..className = "list-group") (
       props.songs.map((song) =>
-        (Dom.li()..className="list-group-item") (song)
+        (Dom.li()..className="list-group-item" ..key=song) (song)
       )
     ));
   }
