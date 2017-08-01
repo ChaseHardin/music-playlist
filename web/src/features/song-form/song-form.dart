@@ -26,8 +26,9 @@ class SongFormComponent<T extends SongFormProps, S extends SongFormState>
             (Dom.div()..className = "container")
               (
                 (Dom.div()..className = "well col-xs-6 col-xs-offset-3")
-                  (
-                    Dom.h3()('My Music Playlist:'), (Songs()..songs = props.songs)()
+                    (Dom.h3()('My Music Playlist:'),
+                     Dom.div() ((Songs()..songs = props.songs)()),
+                     Dom.div()(AddSong()())
                 )
             )
         )
