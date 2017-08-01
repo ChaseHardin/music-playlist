@@ -12,14 +12,25 @@ class SongFormProps extends UiProps {
 class SongFormState extends UiState {}
 
 @Component()
-class SongFormComponent<T extends SongFormProps, S extends SongFormState> extends UiStatefulComponent<T, S> {
+class SongFormComponent<T extends SongFormProps, S extends SongFormState>
+    extends UiStatefulComponent<T, S> {
 
   Map getDefaultProps() => (
-    newProps()
-      ..songs = ['Excuse Me', 'Wake up Call', 'Wasteland']
-  );
+          newProps()..songs = ['Excuse Me', 'Wake up Call', 'Wasteland']
+      );
 
   render() {
-    return (Songs()..songs = props.songs)();
+    return (
+        (Dom.div()..className = "row")
+          (
+            (Dom.div()..className = "container")
+              (
+                (Dom.div()..className = "well col-xs-6 col-xs-offset-3")
+                  (
+                    Dom.h3()('My Music Playlist:'), (Songs()..songs = props.songs)()
+                )
+            )
+        )
+    );
   }
 }
