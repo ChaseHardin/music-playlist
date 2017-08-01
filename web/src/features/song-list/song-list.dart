@@ -13,10 +13,6 @@ class SongState extends UiState {}
 
 @Component()
 class SongListComponent<T extends SongProps, S extends SongState> extends UiStatefulComponent<T, S> {
-  Map getDefaultProps() => (
-      newProps()
-        ..songs = ['Excuse Me', 'Wake up Call', 'Wasteland', 'Mysterious Island']
-  );
 
   render() {
     return ((Dom.ul() ..className = "list-group") (
