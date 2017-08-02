@@ -9,7 +9,9 @@ class SongFormProps extends UiProps {
 }
 
 @State()
-class SongFormState extends UiState {}
+class SongFormState extends UiState {
+  List<String> songs;
+}
 
 @Component()
 class SongFormComponent<T extends SongFormProps, S extends SongFormState>
@@ -18,6 +20,11 @@ class SongFormComponent<T extends SongFormProps, S extends SongFormState>
   Map getDefaultProps() => (
           newProps()..songs = ['Excuse Me', 'Wake up Call', 'Wasteland']
       );
+
+  handleAddSong(song) {
+    print(song);
+    props.songs.add(song);
+  }
 
   render() {
     return (
@@ -28,7 +35,7 @@ class SongFormComponent<T extends SongFormProps, S extends SongFormState>
                 (Dom.div()..className = "well col-xs-6 col-xs-offset-3")
                     (Dom.h3()('My Music Playlist:'),
                      Dom.div() ((Songs()..songs = props.songs)()),
-                     Dom.div()(AddSong()())
+                     Dom.div() ((AddSong()..handleAddSong = handleAddSong)())
                 )
             )
         )

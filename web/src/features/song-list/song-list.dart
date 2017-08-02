@@ -9,7 +9,8 @@ class SongProps extends UiProps {
 }
 
 @State()
-class SongState extends UiState {}
+class SongState extends UiState {
+}
 
 @Component()
 class SongListComponent<T extends SongProps, S extends SongState> extends UiStatefulComponent<T, S> {
