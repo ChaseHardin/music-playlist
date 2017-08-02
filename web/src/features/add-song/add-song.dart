@@ -6,7 +6,6 @@ UiFactory<AddSongProps> AddSong;
 @Props()
 class AddSongProps extends UiProps {
   dynamic handleAddSong;
-  //String newSong;
 }
 
 @State()
@@ -15,8 +14,7 @@ class AddSongState extends UiState {
 }
 
 @Component()
-class AddSongComponent<T extends AddSongProps, S extends AddSongState>
-    extends UiStatefulComponent<T, S> {
+class AddSongComponent<T extends AddSongProps, S extends AddSongState> extends UiStatefulComponent<T, S> {
 
   void _handleChange(SyntheticFormEvent event) {
     setState(newState()
@@ -24,7 +22,7 @@ class AddSongComponent<T extends AddSongProps, S extends AddSongState>
     );
   }
 
-  void _message(SyntheticMouseEvent event) {
+  void _onClick(SyntheticMouseEvent event) {
     this.props.handleAddSong(state.newSong);
   }
 
@@ -38,7 +36,7 @@ class AddSongComponent<T extends AddSongProps, S extends AddSongState>
                   ..className = "col-md-3 control-label")('Queue Song:'),
                 (Dom.div()
                   ..className = "col-md-9")(
-                    (Dom.input()..id="add-song-id"
+                    (Dom.input()
                       ..className = "form-control" ..onChange = _handleChange)()
                 )
             ),
@@ -49,9 +47,9 @@ class AddSongComponent<T extends AddSongProps, S extends AddSongState>
                   ..className = "col-md-10 col-md-offset-2 text-right")(
                     (Dom.input()
                       ..type = "button"
-                      ..value = "Click Me!"
+                      ..value = "Add Song"
                       ..className = "btn btn-primary"
-                      ..onClick = _message)()
+                      ..onClick = _onClick)()
                 )
             )
         )

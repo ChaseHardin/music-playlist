@@ -17,13 +17,20 @@ class SongFormState extends UiState {
 class SongFormComponent<T extends SongFormProps, S extends SongFormState>
     extends UiStatefulComponent<T, S> {
 
-  Map getDefaultProps() => (
-          newProps()..songs = ['Excuse Me', 'Wake up Call', 'Wasteland']
-      );
+  Map getDefaultProps() => (newProps()
+      ..songs = ['Excuse Me', 'Wake up Call', 'Wasteland']
+  );
+
+  Map getInitialState() => (newState()
+      ..songs = ['Excuse Me', 'Wake up Call', 'Wasteland']
+  );
 
   handleAddSong(song) {
-    print(song);
-    props.songs.add(song);
+    state.songs.add(song);
+
+    setState(newState()
+      ..songs = state.songs
+    );
   }
 
   render() {
@@ -33,8 +40,8 @@ class SongFormComponent<T extends SongFormProps, S extends SongFormState>
             (Dom.div()..className = "container")
               (
                 (Dom.div()..className = "well col-xs-6 col-xs-offset-3")
-                    (Dom.h3()('My Music Playlist:'),
-                     Dom.div() ((Songs()..songs = props.songs)()),
+                    (Dom.h3()('Music Playlist:'),
+                     Dom.div() ((Songs()..songs = state.songs)()),
                      Dom.div() ((AddSong()..handleAddSong = handleAddSong)())
                 )
             )
